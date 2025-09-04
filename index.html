@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>George Bush Lubutse - Financial Advisor | ICEA LION Group</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+      scroll-behavior: smooth;
+    }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --primary-color: #000;
+      --secondary-color: #d4af37;
+      --light-color: #ffffff;
+    }
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(0,0,0,0.8);
+      color: var(--light-color);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 2rem; z-index: 100;
+    }
+    nav .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--secondary-color);
+    }
+    nav .menu { display: flex; gap: 1rem; }
+    nav .menu a {
+      color: var(--light-color); font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav .menu a:hover { color: var(--secondary-color); }
+    nav .menu-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
+    
+    #home {
+      height: 100vh;
+      background: url('georgephoto.png') no-repeat center center/cover;
+      position: relative; color: var(--light-color);
+      display: flex; justify-content: center; align-items: center; text-align: center;
+    }
+    #home::after {
+      content: ""; position: absolute; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.5);
+    }
+    #home .content { position: relative; z-index:1; }
+    #home h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 0.5rem; }
+    #home p { font-size: 1.25rem; }
+
+    /* ✅ WhatsApp CTA button */
+    .whatsapp-btn {
+      position: fixed; bottom: 20px; right: 20px; z-index: 200;
+      background: #25D366; color: white; border-radius: 50%;
+      width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
+      font-size: 30px; box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+    }
+    .whatsapp-btn:hover { transform: scale(1.1); }
+
+    section { padding: 4rem 2rem; }
+    section h2 {
+      font-family: 'Playfair Display', serif; font-size: 2.5rem;
+      margin-bottom: 1rem; color: var(--primary-color); text-align: center;
+    }
+    section p {
+      font-size: 1rem; line-height: 1.6; color: var(--primary-color);
+      max-width: 800px; margin: 0 auto 1.5rem; text-align: center;
+    }
+
+    #services .service-list {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+    }
+    #services .service-item {
+      flex: 1 1 250px; max-width: 300px; background: #f7f7f7;
+      border-radius: 8px; padding: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center;
+    }
+    #services .service-item h3 {
+      font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--secondary-color);
+    }
+
+    /* ✅ Testimonials */
+    #testimonials .testimonial-list {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+    }
+    #testimonials .testimonial {
+      flex: 1 1 300px; max-width: 350px; background: #fff;
+      border-left: 5px solid var(--secondary-color);
+      padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #testimonials .testimonial p {
+      font-style: italic; margin-bottom: 1rem;
+    }
+    #testimonials .testimonial h4 {
+      margin: 0; font-size: 1rem; font-weight: 600; color: var(--primary-color);
+    }
+
+    #contact .contact-info {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: 2rem; margin-bottom: 2rem;
+    }
+    #contact .contact-item { flex: 1 1 250px; max-width: 300px; text-align: center; }
+    #contact .contact-item h3 { font-size: 1.25rem; margin-bottom: 0.5rem; color: var(--secondary-color); }
+
+    #contact form {
+      max-width: 600px; margin: 0 auto; background: #f7f7f7;
+      padding: 2rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    #contact form .form-group { margin-bottom: 1rem; }
+    #contact form label {
+      display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--primary-color);
+    }
+    #contact form input, #contact form textarea {
+      width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 4px;
+    }
+    #contact form button {
+      background: var(--secondary-color); color: var(--light-color);
+      padding: 0.75rem 1.5rem; border: none; border-radius: 4px;
+      font-size: 1rem; cursor: pointer; transition: background 0.3s;
+    }
+    #contact form button:hover { background: darkgoldenrod; }
+
+    footer { text-align: center; padding: 2rem; background: var(--primary-color); color: var(--light-color); }
+
+    @media (max-width: 768px) {
+      nav .menu { display: none; }
+      nav .menu-toggle { display: block; color: var(--light-color); }
+      nav.open .menu {
+        display: flex; flex-direction: column; position: absolute; top: 100%; right: 0;
+        background: rgba(0,0,0,0.9); width: 200px; padding: 1rem;
+      }
+      #services .service-list, #contact .contact-info, #testimonials .testimonial-list { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">George Bush Lubutse</div>
+    <div class="menu-toggle">&#9776;</div>
+    <div class="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <header id="home">
+    <div class="content">
+      <h1>George Bush Lubutse</h1>
+      <p>Certified Financial Advisor | ICEA LION Group</p>
+    </div>
+  </header>
+
+  <!-- ✅ WhatsApp Floating Button -->
+  <a href="https://wa.me/254724559733" target="_blank" class="whatsapp-btn">💬</a>
+
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I am George Bush Lubutse, a certified financial advisor with ICEA LION Group.  
+      My mission is to help families and individuals secure their future through smart financial planning.  
+      Whether you are looking to grow your wealth, protect your loved ones, or prepare for life’s uncertainties,  
+      I provide trusted solutions tailored to your needs.  
+      Let’s build a strong financial foundation together and give you the peace of mind you deserve.
+    </p>
+  </section>
+
+  <section id="services">
+    <h2>Services</h2>
+    <div class="service-list">
+      <div class="service-item">
+        <h3>Retirement Planning</h3>
+        <p>Plan your retirement with tailored strategies to ensure you and your loved ones enjoy a comfortable and secure future.</p>
+      </div>
+      <div class="service-item">
+        <h3>Education Planning</h3>
+        <p>Secure your children's future with an education plan that covers schooling expenses. Invest early to fund college and university.</p>
+      </div>
+      <div class="service-item">
+        <h3>Insurance</h3>
+        <p>Protect what matters most with life, health, and property insurance solutions designed to safeguard you from uncertainties.</p>
+      </div>
+      <div class="service-item">
+        <h3>Pensions</h3>
+        <p>Maximize your pension contributions to secure a stable and reliable income after retirement.</p>
+      </div>
+      <div class="service-item">
+        <h3>Investments</h3>
+        <p>Grow your wealth through diversified investment opportunities tailored to your financial goals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ✅ Testimonials Section -->
+  <section id="testimonials">
+    <h2>What My Clients Say</h2>
+    <div class="testimonial-list">
+      <div class="testimonial">
+        <p>"George helped me set up a retirement plan that gives me confidence about the future. Highly professional and reliable!"</p>
+        <h4>- Mary W.</h4>
+      </div>
+      <div class="testimonial">
+        <p>"Thanks to George, my children’s education is fully covered. I now have peace of mind knowing their future is secure."</p>
+        <h4>- James K.</h4>
+      </div>
+      <div class="testimonial">
+        <p>"I never understood investments until George explained them in simple terms. My portfolio is already growing!"</p>
+        <h4>- Sarah L.</h4>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <div class="contact-info">
+      <div class="contact-item">
+        <h3>Email</h3>
+        <p>george.lubutse@life.icealion.com</p>
+      </div>
+      <div class="contact-item">
+        <h3>WhatsApp</h3>
+        <p><a href="https://wa.me/254724559733" target="_blank">Chat on WhatsApp</a></p>
+      </div>
+    </div>
+    <form action="https://formspree.io/f/xwpnwejp" method="POST">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+      </div>
+      <div class="form-group">
+        <label for="emailAddress">Email</label>
+        <input type="email" id="emailAddress" name="email" placeholder="Your Email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 George Bush Lubutse. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+      nav.classList.toggle('open');
+    });
+  </script>
+</body>
+</html>
